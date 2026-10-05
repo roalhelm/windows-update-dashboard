@@ -1,0 +1,1 @@
+{"name":"windows-update-dashboard","version":"1.0.0","private":true,"type":"module","scripts":{"validate":"node scripts/validate.mjs","test":"npm run validate && node --test tests/*.test.mjs"},"engines":{"node":">=20"},"license":"MIT"}

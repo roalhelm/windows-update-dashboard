@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "lastUpdated": "2026-10-05",
+  "updates": [
+    {
+      "category": "Windows 10",
+      "product": "Windows 10",
+      "version": "22H2",
+      "kb": "KB5029244",
+      "releaseDate": "2023-08-08",
+      "osBuild": "19045.3324",
+      "documentationUrl": "https://support.microsoft.com/help/5029244"
+    },
+    {
+      "category": "Windows 11",
+      "product": "Windows 11",
+      "version": "22H2",
+      "kb": "KB5029263",
+      "releaseDate": "2023-08-08",
+      "osBuild": "22621.2134",
+      "documentationUrl": "https://support.microsoft.com/help/5029263"
+    },
+    {
+      "category": "Windows 10",
+      "product": "Windows 10",
+      "version": "22H2",
+      "kb": "KB5050081",
+      "releaseDate": "2025-01-28",
+      "osBuild": "19045.5440",
+      "documentationUrl": "https://support.microsoft.com/help/5050081"
+    }
+  ]
+}
