@@ -1,21 +1,21 @@
 # Microsoft Update Dashboard v2
 
-GitHub-Pages-Dashboard, das seine Windows-Update-Daten bei jedem Build direkt von offiziellen Microsoft-Supportseiten abruft. Die erzeugte JSON-Datei liegt nur im Pages-Artefakt, nicht im Repository. Updates werden nach Produkt und Feature-Update-Version gruppiert.
+A GitHub Pages dashboard that fetches its Windows Update data on every build directly from official Microsoft support pages. The generated JSON file exists only in the Pages artifact, not in the repository. Updates are grouped by product and feature update version.
 
-## Architektur
+## Architecture
 
-`config/sources.json` enthält ausschließlich Microsoft-Quell-URLs und deren Feature-Version. GitHub Actions führt täglich sowie bei Push/Manuell `npm run build` aus. Der Synchronisierer lädt die Seiten, extrahiert Datum, KB und OS-Build und erzeugt `_site/data/updates.json`. Danach wird `_site` veröffentlicht.
+`config/sources.json` contains only Microsoft source URLs and their feature versions. GitHub Actions runs `npm run build` daily as well as on push/manual triggers. The synchronizer loads the pages, extracts the date, KB, and OS build, and generates `_site/data/updates.json`. After that, `_site` is published.
 
-Eine Browser-Direktabfrage von `support.microsoft.com` wird bewusst nicht verwendet, weil eine statische Pages-Seite nicht von fremden CORS-Richtlinien abhängig sein sollte. "Live" bedeutet daher: serverseitig bei jedem GitHub-Actions-Build frisch von Microsoft abgerufen. Bei einem Quellenfehler wird dieser sichtbar protokolliert; schlägt jede Quelle fehl, stoppt das Deployment.
+A direct browser query to `support.microsoft.com` is deliberately not used because a static Pages site should not depend on third-party CORS policies. "Live" therefore means: freshly fetched from Microsoft on the server side during each GitHub Actions build. If a source fails, the error is logged visibly; if every source fails, deployment stops.
 
-## Einrichtung
+## Setup
 
-1. Dateien in ein GitHub-Repository mit Branch `main` hochladen.
-2. Unter **Settings > Pages > Source** die Option **GitHub Actions** wählen.
-3. Workflow **Live Microsoft sync and Pages** manuell starten oder auf den nächsten Lauf warten.
-4. Weitere Feature-Versionen in `config/sources.json` ergänzen. Nur `https://support.microsoft.com/...` ist erlaubt.
+1. Upload the files to a GitHub repository using the `main` branch.
+2. Under **Settings > Pages > Source**, choose **GitHub Actions**.
+3. Start the **Live Microsoft sync and Pages** workflow manually or wait for the next run.
+4. Add more feature versions in `config/sources.json`. Only `https://support.microsoft.com/...` is allowed.
 
-## Lokal testen
+## Local testing
 
 ```bash
 npm test
@@ -23,21 +23,21 @@ npm run build
 python3 -m http.server 8000 --directory _site
 ```
 
-## Daten und Berechtigungen
+## Data and permissions
 
-Microsoft Graph wird nicht verwendet. Es sind keine Tenant-Berechtigungen, Secrets oder App-Registrierungen erforderlich. GitHub Actions verwendet nur `contents: read`, `pages: write` und `id-token: write`.
+Microsoft Graph is not used. No tenant permissions, secrets, or app registrations are required. GitHub Actions only uses `contents: read`, `pages: write`, and `id-token: write`.
 
-## Einschränkungen
+## Limitations
 
-- Microsoft-Supportseiten sind HTML und keine stabile öffentliche JSON-API. Ändert Microsoft das Markup, kann der Parser ausfallen. Tests decken das erwartete Format ab.
-- Eine einzelne Detailseite liefert nur das jeweilige Update. Für eine komplette Feature-Version sollte deren offizielle Update-History-Seite in `config/sources.json` stehen.
-- Office und Teams haben andere Publikationsformate und benötigen separate Adapter; es werden keine KB-Nummern erfunden.
-- Die Microsoft-Graph-Windows-Updates-API liefert strukturierte Windows-Daten, benötigt aber Authentifizierung und verwendet Beta-Endpunkte. Sie ist daher nicht der sichere Standard für eine öffentliche GitHub-Pages-Seite.
+- Microsoft support pages are HTML, not a stable public JSON API. If Microsoft changes the markup, the parser may fail. Tests cover the expected format.
+- A single detail page only returns the relevant update. For a complete feature version, its official update history page should be listed in `config/sources.json`.
+- Office and Teams use different publication formats and require separate adapters; no KB numbers are invented.
+- The Microsoft Graph Windows Updates API provides structured Windows data, but it requires authentication and uses beta endpoints. Therefore, it is not the secure default for a public GitHub Pages site.
 
-## Sicherheit
+## Security
 
-**Bestanden:** Host-Allowlist, HTTPS-only, 30-Sekunden-Timeout, 8-MiB-Limit, keine Secrets, keine DOM-Rohdaten, CSP, sichere externe Links, minimale Workflow-Berechtigungen.
+**Passed:** Host allowlist, HTTPS-only, 30-second timeout, 8 MiB limit, no secrets, no raw DOM data, CSP, secure external links, minimal workflow permissions.
 
-**Abweichung:** HTML-Scraping statt stabiler API. Risiko: Parsing-Ausfall. Abhilfe: Quellenfehler sichtbar machen, Deployment bei Totalausfall stoppen und Parser-Tests pflegen.
+**Deviation:** HTML scraping instead of a stable API. Risk: parser outage. Mitigation: make source errors visible, stop deployment if all sources fail, and maintain parser tests.
 
-**Nicht prüfbar:** Unabhängige Multi-Agent-Verifikation des vollständigen Cloudflare-Auditablaufs.
+**Not verifiable:** Independent multi-agent verification of the complete Cloudflare audit flow.
