@@ -1,0 +1,14 @@
+{
+  "sources": [
+    {
+      "product": "Windows 10",
+      "featureVersion": "22H2",
+      "url": "https://support.microsoft.com/en-gb/servicing/os/windows-10/2023/08/august-8-2023-kb5029244-os-builds-19044-3324-and-19045-3324-expired"
+    },
+    {
+      "product": "Windows 11",
+      "featureVersion": "24H2",
+      "url": "https://support.microsoft.com/en-us/topic/windows-11-version-24h2-update-history-0929c747-1815-4543-8461-0160d16f15e5"
+    }
+  ]
+}

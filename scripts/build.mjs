@@ -1,0 +1,1 @@
+import fs from'node:fs/promises';import path from'node:path';await fs.mkdir('_site/assets',{recursive:true});for(const f of ['index.html','assets/app.js','assets/style.css']){const d=path.join('_site',f);await fs.mkdir(path.dirname(d),{recursive:true});await fs.copyFile(f,d)}
