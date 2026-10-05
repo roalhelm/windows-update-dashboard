@@ -7,8 +7,23 @@
     },
     {
       "product": "Windows 11",
+      "featureVersion": "23H2",
+      "url": "https://support.microsoft.com/en-us/servicing/os/windows-11/2023/09/windows-11-version-23h2-update-history"
+    },
+    {
+      "product": "Windows 11",
       "featureVersion": "24H2",
       "url": "https://support.microsoft.com/en-us/topic/windows-11-version-24h2-update-history-0929c747-1815-4543-8461-0160d16f15e5"
+    },
+    {
+      "product": "Windows 11",
+      "featureVersion": "25H2",
+      "url": "https://support.microsoft.com/en-us/servicing/os/windows-11/2025/07/windows-11-version-25h2-update-history"
+    },
+    {
+      "product": "Windows 11",
+      "featureVersion": "26H2",
+      "url": "https://support.microsoft.com/en-us/servicing/os/windows-11/2026/09/windows-11-version-26h2-update-history"
     }
   ]
 }
