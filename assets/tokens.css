@@ -1,0 +1,200 @@
+/* ==========================================================================
+   letmetrythis Design-Tokens  v1.0
+   Eine Quelle fuer Blog, Apps, Projektseiten und Social-Media-Grafiken.
+
+   Aufbau:
+   1. Basis-Palette (feste Farbwerte, nie direkt in Komponenten verwenden)
+   2. Semantische Tokens (die man benutzt: --bg, --text, --primary ...)
+   3. Typografie, Abstaende, Radien, Schatten, Bewegung
+   4. Varianten: Light-Theme und Marken-Akzent "app" (Teal statt Cyan)
+
+   Dark ist Standard. Light per <html data-theme="light">.
+   Produkt-/App-Seiten: <html data-brand="app"> (Teal wie LeckerBierchen).
+   ========================================================================== */
+
+:root {
+  /* ---------- 1. Basis-Palette ---------- */
+  --navy-950: #070b16;
+  --navy-900: #0b1120;
+  --navy-850: #101a2c;
+  --navy-800: #15223a;
+  --navy-700: #1e2d47;
+
+  --slate-50:  #f4f8fb;
+  --slate-100: #e9f1f7;
+  --slate-200: #d8e3ec;
+  --slate-400: #94a3b8;
+  --slate-600: #556275;
+  --slate-900: #0f1b2d;
+
+  --cyan-300: #67e8f9;
+  --cyan-400: #22d3ee;
+  --cyan-600: #0891b2;
+  --cyan-700: #0e7490;
+  --cyan-800: #155e75;
+
+  --teal-300: #5eead4;
+  --teal-400: #2dd4bf;
+  --teal-600: #0d9488;
+  --teal-700: #0f766e;
+  --teal-800: #115e59;
+
+  --amber-400: #f5a524;
+  --amber-500: #f59e0b;
+  --amber-700: #b45309;
+  --amber-100: #fef3c7;
+
+  --red-400: #f87171;
+  --red-700: #b42318;
+  --green-400: #4ade80;
+  --green-700: #15803d;
+
+  /* ---------- 2. Semantische Tokens (Dark, Standard) ---------- */
+  --bg: var(--navy-900);
+  --bg-deep: var(--navy-950);
+  --surface: var(--navy-850);
+  --surface-strong: var(--navy-800);
+  --card-bg: rgba(16, 26, 44, .92);
+  --header-bg: rgba(11, 17, 32, .8);
+  --line: var(--navy-700);
+
+  --text: #e6edf7;
+  --muted: var(--slate-400);
+
+  --primary: var(--cyan-400);          /* Links, Buttons, Highlights */
+  --primary-hover: var(--cyan-300);
+  --on-primary: #04121a;               /* Text auf Primary */
+  --primary-soft: rgba(34, 211, 238, .12);
+  --primary-glow: rgba(34, 211, 238, .35);
+
+  --accent: var(--amber-400);          /* Bernstein: Badges, Status, "> " */
+  --on-accent: #1a1308;
+  --accent-soft: rgba(245, 165, 36, .14);
+  --accent-text: var(--amber-400);     /* Bernstein als Textfarbe auf --accent-soft */
+
+  --danger: var(--red-400);
+  --success: var(--green-400);
+
+  /* ---------- 3. Typografie ---------- */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --fs-xs: .78rem;     /* Meta, Tags */
+  --fs-sm: .9rem;      /* Kleine Buttons, Eyebrow */
+  --fs-base: 1rem;
+  --fs-lg: 1.15rem;    /* Lead-Text */
+  --fs-h3: 1.25rem;
+  --fs-h2: clamp(2rem, 4vw, 3rem);
+  --fs-h1: clamp(2.6rem, 6vw, 4.6rem);
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 650;
+  --fw-bold: 750;
+  --fw-black: 800;
+
+  --lh-tight: 1.08;    /* Ueberschriften */
+  --lh-body: 1.6;
+  --ls-heading: -0.045em;
+  --ls-tight: -0.025em;
+  --ls-caps: .15em;    /* Versalien-Labels */
+
+  /* ---------- Abstaende (4px-Raster) ---------- */
+  --space-1: .25rem;   /* 4 */
+  --space-2: .5rem;    /* 8 */
+  --space-3: .75rem;   /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-7: 3rem;     /* 48 */
+  --space-8: 4rem;     /* 64 */
+  --space-9: 5rem;     /* 80 */
+
+  --container: 1120px;
+  --container-text: 780px;
+  --gutter: clamp(1rem, 4vw, 3rem);
+
+  /* ---------- Radien ---------- */
+  --radius-sm: 6px;     /* Tags */
+  --radius-md: 12px;    /* Bilder, Inputs, App-Buttons */
+  --radius-lg: 20px;    /* Karten, Panels */
+  --radius-xl: 24px;    /* App-Icons */
+  --radius-pill: 999px; /* Buttons, Pills */
+
+  /* ---------- Schatten ---------- */
+  --shadow-soft: 0 14px 32px rgba(0, 0, 0, .25);
+  --shadow: 0 20px 60px rgba(0, 0, 0, .35);
+  --shadow-glow: 0 0 24px var(--primary-glow);
+
+  /* ---------- Bewegung ---------- */
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --dur-fast: .2s;
+  --dur: .25s;
+
+  color-scheme: dark;
+}
+
+/* ---------- 4a. Light-Theme ---------- */
+:root[data-theme="light"] {
+  --bg: var(--slate-50);
+  --bg-deep: var(--slate-100);
+  --surface: #ffffff;
+  --surface-strong: #eef5f9;
+  --card-bg: rgba(255, 255, 255, .95);
+  --header-bg: rgba(244, 248, 251, .85);
+  --line: var(--slate-200);
+
+  --text: var(--slate-900);
+  --muted: var(--slate-600);
+
+  --primary: var(--cyan-700);
+  --primary-hover: var(--cyan-800);
+  --on-primary: #ffffff;
+  --primary-soft: rgba(8, 145, 178, .1);
+  --primary-glow: rgba(8, 145, 178, .25);
+
+  --accent: var(--amber-700);
+  --on-accent: #ffffff;
+  --accent-soft: rgba(180, 83, 9, .1);
+  --accent-text: #92400e;              /* dunkler, damit kleiner Text 4.5:1 erreicht */
+
+  --danger: var(--red-700);
+  --success: var(--green-700);
+
+  --shadow-soft: 0 14px 32px rgba(15, 27, 45, .05);
+  --shadow: 0 20px 60px rgba(15, 27, 45, .08);
+
+  color-scheme: light;
+}
+
+/* ---------- 4b. Marken-Akzent "app" (Teal, z. B. LeckerBierchen) ---------- */
+:root[data-brand="app"] {
+  --primary: var(--teal-300);
+  --primary-hover: #99f6e4;
+  --on-primary: #042f2e;
+  --primary-soft: rgba(45, 212, 191, .12);
+  --primary-glow: rgba(45, 212, 191, .35);
+}
+:root[data-brand="app"][data-theme="light"] {
+  --primary: var(--teal-700);
+  --primary-hover: var(--teal-800);
+  --on-primary: #ffffff;
+  --primary-soft: rgba(15, 118, 110, .1);
+  --primary-glow: rgba(15, 118, 110, .25);
+}
+
+/* ---------- Schriften (Pfad bei Bedarf anpassen) ---------- */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("fonts/inter-latin-wght-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 800;
+  src: url("fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2");
+}

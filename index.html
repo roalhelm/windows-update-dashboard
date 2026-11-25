@@ -1,1 +1,62 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'"><title>Microsoft Update Dashboard</title><link rel="stylesheet" href="assets/style.css"></head><body><header><div><p class="eyebrow">Live from Microsoft</p><h1>Microsoft Update Dashboard</h1><p>Grouped by product and feature update version.</p></div><button id="theme" aria-label="Toggle color scheme">◐</button></header><main><section class="controls"><label>Search<input id="search" type="search" placeholder="KB, build, version"></label><label>Product<select id="product"><option value="">All</option></select></label><label>Year<select id="year"><option value="">All years</option></select></label><label>Release month<select id="month"><option value="">All months</option></select></label><label>Update type<select id="type"><option value="">All types</option><option value="Security/Quality">Security/Quality</option><option value="Preview">Preview</option><option value="Out-of-band">Out-of-band</option></select></label></section><p id="sync" role="status" aria-live="polite"></p><div id="content"></div></main><footer>The data is fetched directly from Microsoft Support during the Pages build.</footer><script src="assets/app.js" defer></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'">
+  <meta name="description" content="All cumulative Windows 10 and Windows 11 updates with date, KB and OS build, refreshed daily from Microsoft Support.">
+  <meta name="theme-color" content="#0b1120">
+  <title>Microsoft Update Dashboard | LetMeTryThis.dev</title>
+  <script src="assets/theme.js"></script>
+  <link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/tokens.css">
+  <link rel="stylesheet" href="assets/components.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/index-en.html" aria-label="LetMeTryThis.dev home">
+      <img src="assets/img/logo-256.webp" alt="" width="40" height="40">
+      <span>LetMeTryThis.dev</span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="/index-en.html#blog">Blog</a>
+      <a href="/index-en.html#projects">Projects</a>
+      <a href="/projects/windows-update-dashboard-en.html">About this tool</a>
+      <a href="https://github.com/roalhelm/windows-update-dashboard" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+    <button id="theme" class="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">&#9790;</button>
+  </header>
+
+  <main class="container dash">
+    <section class="dash-hero">
+      <p class="eyebrow">live from microsoft support</p>
+      <h1>Update <span class="hl">Dashboard</span></h1>
+      <p class="lead">All cumulative Windows updates, grouped by product and feature update version. Refreshed daily from the official Microsoft update history pages.</p>
+      <p id="sync" class="meta sync" role="status" aria-live="polite">Loading data ...</p>
+    </section>
+
+    <section class="controls card" aria-label="Filter updates">
+      <label class="field field-search">Search<input id="search" class="input" type="search" placeholder="KB, build, version"></label>
+      <label class="field">Product<select id="product" class="input"><option value="">All</option></select></label>
+      <label class="field">Year<select id="year" class="input"><option value="">All years</option></select></label>
+      <label class="field">Release month<select id="month" class="input"><option value="">All months</option></select></label>
+      <label class="field">Update type<select id="type" class="input"><option value="">All types</option><option value="Security/Quality">Security/Quality</option><option value="Preview">Preview</option><option value="Out-of-band">Out-of-band</option></select></label>
+    </section>
+
+    <div id="content"></div>
+  </main>
+
+  <footer class="site-footer">
+    <span class="footer-brand"><img src="assets/img/logo-256.webp" alt="" width="32" height="32" loading="lazy">LetMeTryThis.dev</span>
+    <span class="footer-tagline">Explore · Automate · Improve</span>
+    <span class="footer-links">
+      <a href="/impressum-en.html">Imprint</a> ·
+      <a href="/datenschutz-en.html">Privacy</a> ·
+      <a href="https://github.com/roalhelm/windows-update-dashboard" target="_blank" rel="noopener noreferrer">Source</a>
+    </span>
+  </footer>
+  <script src="assets/app.js" defer></script>
+</body>
+</html>
